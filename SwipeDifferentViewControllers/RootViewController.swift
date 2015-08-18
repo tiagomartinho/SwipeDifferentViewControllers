@@ -4,6 +4,8 @@ class RootViewController: UIViewController, UIPageViewControllerDelegate, UIPage
     
     let vcStoryboardAndRestorationId = ["FirstViewController","SecondViewController","ThirdViewController"]
     
+    let startingViewControllerIndex = 1
+    
     var pageViewController: UIPageViewController?
     
     override func viewDidLoad() {
@@ -14,7 +16,7 @@ class RootViewController: UIViewController, UIPageViewControllerDelegate, UIPage
     func initPageViewController() {
         self.pageViewController = UIPageViewController(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
         self.pageViewController!.delegate = self
-        let startingViewController = self.viewControllerAtIndex(0, storyboard: self.storyboard!)!
+        let startingViewController = self.viewControllerAtIndex(startingViewControllerIndex, storyboard: self.storyboard!)!
         let viewControllers = [startingViewController]
         self.pageViewController!.setViewControllers(viewControllers, direction: .Forward, animated: false, completion: {done in })
         self.pageViewController!.dataSource = self
